@@ -1,3 +1,9 @@
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -19,7 +25,7 @@
 
     <main>
         <section class="panel configuracao">
-            <form action="gerar_rodadas.php" method="POST">
+           <form id="formatoForm" method="POST">
                 <h2>Escolha o formato das duplas</h2>
                 <div class="opcoes">
                     <label class="opcao">
@@ -45,5 +51,19 @@
                 : 'Bem-vindo(a) ao torneio';
         }
     </script>
+    <script>
+document.getElementById('formatoForm').addEventListener('submit', function(e){
+
+    const formato =
+        document.querySelector('input[name="formato"]:checked').value;
+
+    if(formato === 'fixas'){
+        this.action = '../participantes/montar_duplas.php';
+    }else{
+        this.action = '../participantes/cadastro.php';
+    }
+
+});
+</script>
 </body>
 </html>

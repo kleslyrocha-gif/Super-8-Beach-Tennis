@@ -3,96 +3,17 @@ $participantes = json_decode(file_get_contents('../data/participantes.json'), tr
 $dadosRodadas = json_decode(file_get_contents('../data/rodadas.json'), true) ?: [];
 $rodadas = $dadosRodadas['rodadas'] ?? [];
 
-$classificacao = [];
-foreach ($participantes as $jogador) {
-    $classificacao[$jogador['id']] = [
-        'nome' => $jogador['nome'],
-        'jogos' => 0,
-        'vitorias' => 0,
-        'derrotas' => 0,
-        'gamesPro' => 0,
-        'gamesContra' => 0,
-        'saldo' => 0,
-        'pontos' => 0
-    ];
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
 }
+require_once '../utils/pontuacao.php';
 
-foreach ($rodadas as $rodada) {
-    foreach ($rodada['partidas'] ?? [] as $partida) {
-        if (is_null($partida['placarA'] ?? null) || is_null($partida['placarB'] ?? null)) {
-            continue;
-        }
+$formato = $_SESSION['formato'] ?? 'rotativas';
 
-        $placarA = (int)$partida['placarA'];
-        $placarB = (int)$partida['placarB'];
-        $a = $partida['duplaA'] ?? [];
-        $b = $partida['duplaB'] ?? [];
-
-        foreach ($a as $id) {
-            if (!isset($classificacao[$id])) {
-                continue;
-            }
-            $classificacao[$id]['jogos']++;
-            $classificacao[$id]['gamesPro'] += $placarA;
-            $classificacao[$id]['gamesContra'] += $placarB;
-            $classificacao[$id]['pontos'] += $placarA;
-        }
-
-        foreach ($b as $id) {
-            if (!isset($classificacao[$id])) {
-                continue;
-            }
-            $classificacao[$id]['jogos']++;
-            $classificacao[$id]['gamesPro'] += $placarB;
-            $classificacao[$id]['gamesContra'] += $placarA;
-            $classificacao[$id]['pontos'] += $placarB;
-        }
-
-        if ($placarA > $placarB) {
-            foreach ($a as $id) {
-                if (!isset($classificacao[$id])) {
-                    continue;
-                }
-                $classificacao[$id]['vitorias']++;
-                $classificacao[$id]['pontos'] += 2;
-            }
-            foreach ($b as $id) {
-                if (!isset($classificacao[$id])) {
-                    continue;
-                }
-                $classificacao[$id]['derrotas']++;
-            }
-        } elseif ($placarB > $placarA) {
-            foreach ($b as $id) {
-                if (!isset($classificacao[$id])) {
-                    continue;
-                }
-                $classificacao[$id]['vitorias']++;
-                $classificacao[$id]['pontos'] += 2;
-            }
-            foreach ($a as $id) {
-                if (!isset($classificacao[$id])) {
-                    continue;
-                }
-                $classificacao[$id]['derrotas']++;
-            }
-        }
-    }
-}
-
-foreach ($classificacao as &$j) {
-    $j['saldo'] = $j['gamesPro'] - $j['gamesContra'];
-}
-
-usort($classificacao, function ($a, $b) {
-    if ($a['pontos'] === $b['pontos']) {
-        if ($a['saldo'] === $b['saldo']) {
-            return $b['vitorias'] <=> $a['vitorias'];
-        }
-        return $b['saldo'] <=> $a['saldo'];
-    }
-    return $b['pontos'] <=> $a['pontos'];
-});
+$classificacao = calcularClassificacao(
+    $participantes,
+    $rodadas
+);
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -122,7 +43,7 @@ usort($classificacao, function ($a, $b) {
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Jogador</th>
+                        <th><?= $formato === 'fixas' ? 'Dupla' : 'Jogador' ?></th>
                         <th>Jogos</th>
                         <th>Vitórias</th>
                         <th>Derrotas</th>

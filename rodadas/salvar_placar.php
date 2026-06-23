@@ -8,6 +8,17 @@ $rodada = $_POST['rodada'] ?? null;
 $partida = $_POST['partida'] ?? null;
 $placarA = (int)($_POST['placarA'] ?? -1);
 $placarB = (int)($_POST['placarB'] ?? -1);
+if ($placarA === $placarB) {
+
+    echo "
+    <script>
+        alert('Empates não são permitidos neste torneio.');
+        history.back();
+    </script>
+    ";
+
+    exit;
+}
 
 if ($rodada === null || $partida === null || $placarA < 0 || $placarB < 0) {
     die('Dados inválidos para salvar o placar.');

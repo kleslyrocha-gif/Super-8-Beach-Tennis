@@ -1,4 +1,12 @@
 <?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $_SESSION['formato'] = $_POST['formato'] ?? 'rotativas';
+}
+$formato = $_SESSION['formato'] ?? 'rotativas';
+
 $arquivo = "../data/participantes.json";
 $participantes = [];
 
@@ -32,7 +40,7 @@ if (file_exists($arquivo)) {
                 <h2>Insira os 8 participantes</h2>
                 <span><?= count($participantes) ?>/8</span>
             </div>
-
+        
             <form action="salvar_participantes.php" method="POST">
                 <?php for ($i = 1; $i <= 8; $i++): ?>
                 <div class="linha">

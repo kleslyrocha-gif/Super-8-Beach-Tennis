@@ -1,4 +1,8 @@
 <?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     header('Location: cadastro.php');
     exit;
@@ -7,12 +11,10 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 $nomes = $_POST['nome'] ?? [];
 $apelidos = $_POST['apelido'] ?? [];
 
-if (count($nomes) < 8 || count($apelidos) < 8) {
-    die('Erro ao salvar: todos os campos precisam ser preenchidos.');
-}
-
 $participantes = [];
+
 for ($i = 0; $i < 8; $i++) {
+
     $nome = trim($nomes[$i] ?? '');
 
     if ($nome === '') {
@@ -26,14 +28,17 @@ for ($i = 0; $i < 8; $i++) {
     ];
 }
 
-$arquivo = '../data/participantes.json';
 file_put_contents(
-    $arquivo,
+    '../data/participantes.json',
     json_encode(
         $participantes,
         JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE
     )
 );
 
-header('Location: cadastro.php');
+if (($_SESSION['formato'] ?? 'rotativas') === 'fixas') {
+    header('Location: ../participantes/montar_duplas.php');
+} else {
+    header('Location: ../configuracao/gerar_rodadas.php');
+}
 exit;

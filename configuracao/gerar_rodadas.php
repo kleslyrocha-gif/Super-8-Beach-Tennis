@@ -1,12 +1,13 @@
 <?php
-require_once('../utils/sorteio.php');
 
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    header('Location: configuracao.php');
-    exit;
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
 }
 
-$formato = $_POST['formato'] ?? 'rotativas';
+require_once('../utils/sorteio.php');
+
+$formato = $_SESSION['formato'] ?? 'rotativas';
+
 $arquivoParticipantes = '../data/participantes.json';
 
 if (!file_exists($arquivoParticipantes)) {

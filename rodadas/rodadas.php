@@ -84,6 +84,10 @@ foreach ($rodadas as $indice => $rodada) {
 
                     <h3>
                         Rodada <?= $rodada['numero'] ?>
+                        <a href="../classificacao/classificacao.php"
+                     class="btn btn-small">
+                     📊 Ver Classificação
+                    </a>
                         <?php if ($indiceRodada == $rodadaAtual): ?>
                             🔥 Em andamento
                         <?php endif; ?>
@@ -92,21 +96,44 @@ foreach ($rodadas as $indice => $rodada) {
                         <div class="partida">
                             <div class="partida-topo">
                                 <h4>Quadra <?= $partida['quadra'] ?></h4>
-                                <span class="status-partida <?= (!empty($partida['placarA']) && !empty($partida['placarB'])) ? 'concluida' : 'pendente' ?>">
-                                    <?= (!empty($partida['placarA']) && !empty($partida['placarB'])) ? 'Concluída' : 'Pendente' ?>
+                               <span class="status-partida <?= ($partida['placarA'] !== null && $partida['placarB'] !== null) ? 'concluida' : 'pendente' ?>">
+                                   <?= ($partida['placarA'] !== null && $partida['placarB'] !== null) ? 'Concluída' : 'Pendente' ?>
                                 </span>
                             </div>
 
                             <div class="dupla">
-                                <strong><?= htmlspecialchars(nomeJogador($partida['duplaA'][0] ?? 0, $participantes)) ?></strong>
-                                +
-                                <strong><?= htmlspecialchars(nomeJogador($partida['duplaA'][1] ?? 0, $participantes)) ?></strong>
-                            </div>
-                            <div class="dupla">
-                                <strong><?= htmlspecialchars(nomeJogador($partida['duplaB'][0] ?? 0, $participantes)) ?></strong>
-                                +
-                                <strong><?= htmlspecialchars(nomeJogador($partida['duplaB'][1] ?? 0, $participantes)) ?></strong>
-                            </div>
+
+    🎾
+    <strong>
+        <?= htmlspecialchars(nomeJogador($partida['duplaA'][0] ?? 0, $participantes)) ?>
+    </strong>
+
+    /
+
+    <strong>
+        <?= htmlspecialchars(nomeJogador($partida['duplaA'][1] ?? 0, $participantes)) ?>
+    </strong>
+
+</div>
+
+<div style="text-align:center;font-size:22px;font-weight:bold;margin:10px 0;">
+    VS
+</div>
+
+<div class="dupla">
+
+    🎾
+    <strong>
+        <?= htmlspecialchars(nomeJogador($partida['duplaB'][0] ?? 0, $participantes)) ?>
+    </strong>
+
+    /
+
+    <strong>
+        <?= htmlspecialchars(nomeJogador($partida['duplaB'][1] ?? 0, $participantes)) ?>
+    </strong>
+
+</div>
 
                             <form action="salvar_placar.php" method="POST">
                                 <input type="hidden" name="rodada" value="<?= $rodada['numero'] - 1 ?>">
@@ -134,5 +161,29 @@ foreach ($rodadas as $indice => $rodada) {
                 : 'Bem-vindo(a) ao torneio';
         }
     </script>
+    <script>
+
+document.querySelectorAll('form').forEach(form => {
+
+    form.addEventListener('submit', function(e){
+
+        const inputs = this.querySelectorAll('input[type="number"]');
+
+        const placarA = parseInt(inputs[0].value);
+        const placarB = parseInt(inputs[1].value);
+
+        if(placarA === placarB){
+
+            alert('Empates não são permitidos.');
+
+            e.preventDefault();
+
+        }
+
+    });
+
+});
+
+</script>
 </body>
 </html>

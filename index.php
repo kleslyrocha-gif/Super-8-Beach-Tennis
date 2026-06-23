@@ -24,9 +24,12 @@ $partidasFinalizadas = 0;
 foreach ($rodadas as $rodada) {
     foreach ($rodada['partidas'] ?? [] as $partida) {
         $partidasTotais++;
-        if (!empty($partida['placarA']) && !empty($partida['placarB'])) {
-            $partidasFinalizadas++;
-        }
+        if (
+             $partida['placarA'] !== null &&
+             $partida['placarB'] !== null
+) {
+             $partidasFinalizadas++;
+}
     }
 }
 
@@ -121,7 +124,6 @@ if (!empty($participantes) && !empty($rodadas)) {
         </section>
 
         <section class="menu">
-            <a href="participantes/cadastro.php" class="btn">👥 Cadastrar Participantes</a>
             <a href="configuracao/configuracao.php" class="btn">⚙️ Configurar Torneio</a>
             <a href="rodadas/rodadas.php" class="btn">🎾 Registrar Resultados</a>
             <a href="classificacao/classificacao.php" class="btn">🏆 Classificação</a>
