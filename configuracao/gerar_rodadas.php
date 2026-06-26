@@ -43,7 +43,7 @@ file_put_contents(
 <body>
     <div class="top-nav">
         <a href="javascript:history.back()" class="btn btn-nav">← Voltar</a>
-        <a href="../index.php" class="btn btn-nav">🏠 Início</a>
+        <a href="../index.php" class="btn btn-nav">Início</a>
     </div>
 
     <header>
@@ -54,6 +54,8 @@ file_put_contents(
         <section class="panel success-panel">
             <h2>Torneio configurado com sucesso!</h2>
             <p>As <?= count($rodadas) ?> rodadas foram criadas.</p>
+            <br>
+            <br>
             <a class="btn btn-full" href="../rodadas/rodadas.php">Ir para Rodadas</a>
         </section>
     </main>

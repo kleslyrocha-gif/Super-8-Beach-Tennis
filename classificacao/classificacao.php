@@ -26,11 +26,11 @@ $classificacao = calcularClassificacao(
 <body>
     <div class="top-nav">
         <a href="javascript:history.back()" class="btn btn-nav">← Voltar</a>
-        <a href="../index.php" class="btn btn-nav">🏠 Início</a>
+        <a href="../index.php" class="btn btn-nav">Início</a>
     </div>
 
     <header>
-        <h1>🏆 Classificação Geral</h1>
+        <h1>Classificação Geral</h1>
         <p class="bem-vindo" id="bem-vindo">Bem-vindo ao torneio</p>
     </header>
     <main>

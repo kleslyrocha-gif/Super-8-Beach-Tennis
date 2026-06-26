@@ -1,1 +1,222 @@
-{"rodadas":[]}
+{
+    "formato": "rotativas",
+    "rodadas": [
+        {
+            "numero": 1,
+            "partidas": [
+                {
+                    "quadra": 1,
+                    "duplaA": [
+                        1,
+                        2
+                    ],
+                    "duplaB": [
+                        3,
+                        4
+                    ],
+                    "placarA": 8,
+                    "placarB": 7
+                },
+                {
+                    "quadra": 2,
+                    "duplaA": [
+                        5,
+                        6
+                    ],
+                    "duplaB": [
+                        7,
+                        8
+                    ],
+                    "placarA": null,
+                    "placarB": null
+                }
+            ]
+        },
+        {
+            "numero": 2,
+            "partidas": [
+                {
+                    "quadra": 1,
+                    "duplaA": [
+                        1,
+                        3
+                    ],
+                    "duplaB": [
+                        2,
+                        4
+                    ],
+                    "placarA": null,
+                    "placarB": null
+                },
+                {
+                    "quadra": 2,
+                    "duplaA": [
+                        5,
+                        7
+                    ],
+                    "duplaB": [
+                        6,
+                        8
+                    ],
+                    "placarA": null,
+                    "placarB": null
+                }
+            ]
+        },
+        {
+            "numero": 3,
+            "partidas": [
+                {
+                    "quadra": 1,
+                    "duplaA": [
+                        1,
+                        4
+                    ],
+                    "duplaB": [
+                        2,
+                        3
+                    ],
+                    "placarA": null,
+                    "placarB": null
+                },
+                {
+                    "quadra": 2,
+                    "duplaA": [
+                        5,
+                        8
+                    ],
+                    "duplaB": [
+                        6,
+                        7
+                    ],
+                    "placarA": null,
+                    "placarB": null
+                }
+            ]
+        },
+        {
+            "numero": 4,
+            "partidas": [
+                {
+                    "quadra": 1,
+                    "duplaA": [
+                        1,
+                        5
+                    ],
+                    "duplaB": [
+                        2,
+                        6
+                    ],
+                    "placarA": null,
+                    "placarB": null
+                },
+                {
+                    "quadra": 2,
+                    "duplaA": [
+                        3,
+                        7
+                    ],
+                    "duplaB": [
+                        4,
+                        8
+                    ],
+                    "placarA": null,
+                    "placarB": null
+                }
+            ]
+        },
+        {
+            "numero": 5,
+            "partidas": [
+                {
+                    "quadra": 1,
+                    "duplaA": [
+                        1,
+                        6
+                    ],
+                    "duplaB": [
+                        2,
+                        5
+                    ],
+                    "placarA": null,
+                    "placarB": null
+                },
+                {
+                    "quadra": 2,
+                    "duplaA": [
+                        3,
+                        8
+                    ],
+                    "duplaB": [
+                        4,
+                        7
+                    ],
+                    "placarA": null,
+                    "placarB": null
+                }
+            ]
+        },
+        {
+            "numero": 6,
+            "partidas": [
+                {
+                    "quadra": 1,
+                    "duplaA": [
+                        1,
+                        7
+                    ],
+                    "duplaB": [
+                        2,
+                        8
+                    ],
+                    "placarA": null,
+                    "placarB": null
+                },
+                {
+                    "quadra": 2,
+                    "duplaA": [
+                        3,
+                        5
+                    ],
+                    "duplaB": [
+                        4,
+                        6
+                    ],
+                    "placarA": null,
+                    "placarB": null
+                }
+            ]
+        },
+        {
+            "numero": 7,
+            "partidas": [
+                {
+                    "quadra": 1,
+                    "duplaA": [
+                        1,
+                        8
+                    ],
+                    "duplaB": [
+                        2,
+                        7
+                    ],
+                    "placarA": null,
+                    "placarB": null
+                },
+                {
+                    "quadra": 2,
+                    "duplaA": [
+                        3,
+                        6
+                    ],
+                    "duplaB": [
+                        4,
+                        5
+                    ],
+                    "placarA": null,
+                    "placarB": null
+                }
+            ]
+        }
+    ]
+}

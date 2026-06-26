@@ -52,11 +52,11 @@ foreach ($rodadas as $indice => $rodada) {
 <body>
     <div class="top-nav">
         <a href="javascript:history.back()" class="btn btn-nav">← Voltar</a>
-        <a href="../index.php" class="btn btn-nav">🏠 Início</a>
+        <a href="../index.php" class="btn btn-nav">Início</a>
     </div>
 
     <header>
-        <h1>🎾 Rodadas do Torneio</h1>
+        <h1>Rodadas do Torneio</h1>
         <p class="bem-vindo" id="bem-vindo">Bem-vindo ao torneio</p>
     </header>
 
@@ -115,11 +115,15 @@ foreach ($rodadas as $indice => $rodada) {
     </strong>
 
 </div>
-
-<div style="text-align:center;font-size:22px;font-weight:bold;margin:10px 0;">
+<div style="
+    padding-left:70px;
+    font-size:22px;
+    font-weight:bold;
+    margin:10px 0;
+    color:#14b8a6;
+">
     VS
 </div>
-
 <div class="dupla">
 
     🎾

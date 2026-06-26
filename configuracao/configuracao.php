@@ -15,7 +15,7 @@ if (session_status() === PHP_SESSION_NONE) {
 <body>
     <div class="top-nav">
         <a href="javascript:history.back()" class="btn btn-nav">← Voltar</a>
-        <a href="../index.php" class="btn btn-nav">🏠 Início</a>
+        <a href="../index.php" class="btn btn-nav">Início</a>
     </div>
 
     <header>
@@ -25,21 +25,47 @@ if (session_status() === PHP_SESSION_NONE) {
 
     <main>
         <section class="panel configuracao">
-           <form id="formatoForm" method="POST">
-                <h2>Escolha o formato das duplas</h2>
-                <div class="opcoes">
-                    <label class="opcao">
-                        <input type="radio" name="formato" value="rotativas" checked>
-                        <span>Duplas Rotativas</span>
-                    </label>
-                    <label class="opcao">
-                        <input type="radio" name="formato" value="fixas">
-                        <span>Duplas Fixas</span>
-                    </label>
+    <form id="formatoForm" method="POST">
+
+        <div class="titulo-config">
+            <h2>Configuração do Sorteio</h2>
+            <p>Escolha como as duplas serão formadas durante o torneio.</p>
+        </div>
+
+        <div class="opcoes">
+
+            <label class="opcao-card">
+                <input type="radio" name="formato" value="rotativas" checked>
+
+                <div class="conteudo-opcao">
+                    <h3>🔄 Duplas Rotativas</h3>
+                    <p>
+                        Os parceiros mudam a cada rodada,
+                        garantindo mais interação entre os participantes.
+                    </p>
                 </div>
-                <button class="btn btn-full">Gerar 7 Rodadas</button>
-            </form>
-        </section>
+            </label>
+
+            <label class="opcao-card">
+                <input type="radio" name="formato" value="fixas">
+
+                <div class="conteudo-opcao">
+                    <h3>🎯 Duplas Fixas</h3>
+                    <p>
+                        Os mesmos parceiros permanecem juntos
+                        durante todo o torneio.
+                    </p>
+                </div>
+            </label>
+
+        </div>
+
+        <button class="btn btn-full">
+            Gerar 7 Rodadas
+        </button>
+
+    </form>
+</section>
     </main>
     <script src="../js/ui.js"></script>
     <script>

@@ -46,12 +46,12 @@ $_SESSION['formato'] = 'fixas';
     </a>
 
     <a href="../index.php" class="btn btn-nav">
-        🏠 Início
+        Início
     </a>
 </div>
 
 <header>
-    <h1>🎾 Cadastro das Duplas Fixas</h1>
+    <h1>Cadastro das Duplas Fixas</h1>
 </header>
 
 <main>

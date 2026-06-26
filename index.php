@@ -64,11 +64,11 @@ if (!empty($participantes) && !empty($rodadas)) {
 <body>
     <div class="top-nav">
         <a href="javascript:history.back()" class="btn btn-nav">← Voltar</a>
-        <a href="index.php" class="btn btn-nav">🏠 Início</a>
+        <a href="index.php" class="btn btn-nav"> Início</a>
     </div>
 
     <header>
-        <h1>🏖️ Super 8 Beach Tennis</h1>
+        <h1>Super 8 Beach Tennis</h1>
         <p>Sistema de gerenciamento do torneio</p>
     </header>
 
